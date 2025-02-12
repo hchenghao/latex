@@ -1,0 +1,57 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.example.latexplotter'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.latexplotter"
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // 添加这个配置来处理重复文件
+    packagingOptions {
+        resources {
+            excludes += ['META-INF/COPYING']
+            excludes += ['META-INF/LICENSE']
+            excludes += ['META-INF/NOTICE']
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.androidplot:androidplot-core:1.5.10'
+    implementation 'net.objecthunter:exp4j:0.4.8'
+    implementation 'org.scilab.forge:jlatexmath:1.0.7'
+    implementation 'org.scilab.forge:jlatexmath-font-greek:1.0.7'
+    implementation 'org.scilab.forge:jlatexmath-font-cyrillic:1.0.7'
+
+    // 添加测试依赖
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'androidx.test:rules:1.5.0'
+} 
